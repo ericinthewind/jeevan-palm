@@ -1,0 +1,291 @@
+---
+import '../styles/global.css';
+import Brand from '../components/Brand.astro';
+
+const whatsapp = 'https://wa.me/41795362242?text=Bonjour%20Jeevan%20Palm%2C%20je%20souhaite%20des%20informations%20sur%20la%20villa.';
+
+const features = [
+  ['Piscine & jardin', 'Piscine privée et jardin tropical entretenus, entretien inclus pendant le séjour.'],
+  ['Quatre chambres', 'De l’espace pour huit voyageurs, avec des coins pour se retrouver ou s’isoler.'],
+  ['Deux cuisines', 'Une grande cuisine intérieure et une cuisine d’été sur la terrasse.'],
+  ['Climatisation', 'Les quatre chambres et le salon sont climatisés, et des ventilateurs de plafond se trouvent jusque sur la terrasse.'],
+  ['Bien équipée', 'Four, four micro-ondes, machine à laver, congélateur et machine à glaçons, deux réfrigérateurs, Nespresso, cafetière filtre, rice cooker et blender.'],
+  ['Connectée & multimédia', 'Wi-Fi, Netflix, système hi-fi haut de gamme et deux téléviseurs.'],
+  ['Arrière-cuisine', 'Un espace dédié pour cuisiner et nettoyer, idéal pour préparer le poisson du jour au retour de la pêche.'],
+  ['Quatre WC', 'Un WC dans chaque salle de bain, plus un WC visiteurs indépendant.'],
+  ['Parking privé', 'Un carport couvert et un stationnement à l’abri, dans l’enceinte close de la villa.'],
+  ['Slow living', 'Terrasses ombragées, transats et hamac pour ralentir vraiment.'],
+];
+
+const rooms = [
+  {
+    tag: 'Chambre 1', name: 'Suite parentale',
+    desc: 'La chambre principale ouvre sur un balcon privé avec vue sur la piscine et le jardin, et dispose de son dressing et de sa propre salle de bain attenante habillée de bois.',
+    photos: [['master-bed', 'Chambre principale'], ['master-bed-2', 'Chambre principale et accès au balcon'], ['master-balcony', 'Balcon privé avec vue sur la piscine'], ['master-dressing', 'Dressing en bois de la suite'], ['master-bath-2', 'Salle de bain en bois et baignoire'], ['master-bath-3', 'Baignoire face au jardin']],
+  },
+  {
+    tag: 'Chambre 2', name: 'Chambre double',
+    desc: 'Une chambre double lumineuse, avec un grand lit, une belle ouverture sur la végétation tropicale et sa salle de bain.',
+    photos: [['double-bed', 'Chambre double'], ['double-view', 'Chambre double, autre vue'], ['double-bath', 'Salle de bain de la chambre double']],
+  },
+  {
+    tag: 'Chambre 3', name: 'Chambre enfants',
+    desc: 'Deux lits simples et une fresque dinosaures : une chambre pensée pour les enfants.',
+    photos: [['kids-dino', 'Fresque dinosaures'], ['kids-beds', 'Deux lits simples']],
+  },
+  {
+    tag: 'Chambre 4', name: 'Studio indépendant',
+    desc: 'Au rez-de-chaussée, un studio indépendant avec son entrée, sa salle de bains, son WC et son grand dressing, sa terrasse privée et sa cuisine extérieure.',
+    photos: [['studio-bed', 'Chambre du studio'], ['studio-terrace', 'Terrasse privée du studio'], ['studio-kitchen', 'Cuisine d’été du studio']],
+  },
+];
+
+const beaches = [
+  ['Rock & Reef', 'https://maps.app.goo.gl/bVMqbfZZLRTooSdCA?g_st=ic'],
+  ['La Preneuse', 'https://maps.app.goo.gl/MeM3VfmUSpShdkx17?g_st=ic'],
+  ['Tamarin', 'https://maps.app.goo.gl/SYe9KGJiohYCXpMs7?g_st=ic'],
+  ['Le Morne Public Beach', 'https://maps.app.goo.gl/SFkhpHhwG9WyT8MdA?g_st=ic'],
+  ['La Pointe du Morne', 'https://maps.app.goo.gl/9yrbB1qq6Qq5Qped8?g_st=ic'],
+  ['La Gaulette Pier', 'https://maps.app.goo.gl/pidXLAaMWkogEqLSA?g_st=ic'],
+];
+const restaurants = [
+  ['Happy Rajah', 'https://maps.app.goo.gl/8oxgJm82xQqHLCQT6?g_st=ic'],
+  ['APO', 'https://maps.app.goo.gl/ef4kJmfH1CqpQ9F26?g_st=ic'],
+  ['Enso', 'https://maps.app.goo.gl/f3jHDNAKxucKMAfy9?g_st=ic'],
+  ['Vanilla Café', 'https://maps.app.goo.gl/wKtArCik3fkWyfsm6?g_st=ic'],
+  ['Ruisseau Créole', 'https://maps.app.goo.gl/asSAETUnb8Q5AUCh9?g_st=ic'],
+  ['Big Willy’s', 'https://maps.app.goo.gl/djacUY692BzcJRvf8?g_st=ic'],
+];
+---
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jeevan Palm — Villa privée à l'île Maurice</title>
+  <meta name="description" content="Villa tropicale privée de quatre chambres avec piscine et jardin, sur la côte ouest de l'île Maurice, près du Morne et de Tamarin." />
+  <meta property="og:title" content="Jeevan Palm — Villa privée à l'île Maurice" />
+  <meta property="og:image" content="/images/hero.webp" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <Brand href="/" />
+      <div class="nav-right">
+        <div class="navlinks">
+          <a href="#villa">La villa</a>
+          <a href="#salon">Salon</a>
+          <a href="#chambres">Chambres</a>
+          <a href="#piscine">Piscine</a>
+          <a href="#jardin">Jardin</a>
+          <a href="#water">Sur l’eau</a>
+        </div>
+        <div class="lang"><a href="/" class="on">FR</a><span class="sep">·</span><a href="/en">EN</a></div>
+      </div>
+    </nav>
+    <div class="hero-inner">
+      <a class="eyebrow eyebrow-loc" href="https://www.google.com/maps/search/?api=1&query=Petite%20Case%20Noyale%2C%20Maurice" target="_blank" rel="noopener">
+        <svg class="pin" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 2c-3.87 0-7 3.13-7 7 0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+        Petite Case Noyale · Côte ouest · Île Maurice
+      </a>
+      <h1>Une villa privée, entre le lagon et la montagne.</h1>
+      <p>Quatre chambres, une piscine et un jardin tropical, à quelques minutes du Morne et de Tamarin.</p>
+      <div class="actions">
+        <a class="btn btn-light" href="/disponibilites">Voir les disponibilités</a>
+        <a class="btn btn-outline" href={whatsapp} target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="stats">
+    <div class="stat"><strong>8</strong><span>voyageurs</span></div>
+    <div class="stat"><strong>4</strong><span>chambres</span></div>
+    <div class="stat"><strong>3</strong><span>salles de bain</span></div>
+    <div class="stat"><strong>1</strong><span>piscine privée</span></div>
+  </section>
+
+  <section id="villa" class="section">
+    <div class="wrap">
+      <div class="intro-head">
+        <span class="eyebrow">La villa</span>
+        <h2>Vivre Maurice à son rythme.</h2>
+        <p>Entre Le Morne et Tamarin, Jeevan Palm offre de généreux espaces de vie, une piscine privée et un jardin tropical entretenu. Du café du matin sur la terrasse aux longues soirées sous les palmiers.</p>
+      </div>
+      <div class="intro-grid">
+        <img src="/images/table-set.webp" alt="Grande table dressée avec vue sur la cuisine" loading="lazy" />
+        <img src="/images/table-garden.webp" alt="Grande table dressée ouverte sur le jardin" loading="lazy" />
+        <img src="/images/pool-view.webp" alt="Vue sur la piscine entre les palmiers" loading="lazy" />
+        <img src="/images/loungers.webp" alt="Transats au bord du jardin" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--cream)">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">À l’intérieur</span>
+        <h2>Le confort, sans les contraintes.</h2>
+      </div>
+      <div class="features">
+        {features.map(([t, d]) => (
+          <div class="feature"><h3>{t}</h3><p>{d}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="salon" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Salon & terrasse</span>
+        <h2>Un grand salon ouvert sur la terrasse.</h2>
+        <p>Le séjour se prolonge naturellement sur une grande terrasse couverte, face au jardin et à la piscine — l’endroit idéal pour les repas en famille comme pour les fins de journée à l’ombre.</p>
+      </div>
+      <div class="gallery">
+        <img class="wide" src="/images/salon-1.webp" alt="Grand salon ouvert" loading="lazy" />
+        <img src="/images/terrace-large.webp" alt="Grande terrasse couverte avec vue sur la piscine" loading="lazy" />
+        <img src="/images/salon-pool.webp" alt="Salon ouvert sur la terrasse et la piscine" loading="lazy" />
+        <img class="wide" src="/images/terrace-pool.webp" alt="Salon de terrasse face à la piscine" loading="lazy" />
+        <img src="/images/salon-3.webp" alt="Salon lumineux ouvert sur la terrasse" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section id="chambres" class="section" style="background:var(--cream)">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Les chambres</span>
+        <h2>Quatre chambres, quatre ambiances.</h2>
+      </div>
+      {rooms.map((room) => (
+        <div class="room">
+          <div class="room-head">
+            <span class="eyebrow">{room.tag}</span>
+            <h3>{room.name}</h3>
+            <p>{room.desc}</p>
+          </div>
+          <div class={`room-photos count-${room.photos.length}`}>
+            {room.photos.map(([name, alt]) => (
+              <img src={`/images/${name}.webp`} alt={alt} loading="lazy" />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="piscine" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">La piscine</span>
+        <h2>Une piscine privée, du matin au soir.</h2>
+        <p>Entourée de palmiers et bordée d’une terrasse en bois, la piscine se profite toute la journée — et prend une tout autre allure une fois la nuit tombée.</p>
+      </div>
+      <div class="gallery">
+        <img class="wide tall" src="/images/pool-1.webp" alt="Piscine privée entourée de palmiers" loading="lazy" />
+        <img src="/images/pool-3.webp" alt="Vue sur la piscine depuis la villa" loading="lazy" />
+        <img src="/images/pool-2.webp" alt="Piscine éclairée à la tombée de la nuit" loading="lazy" />
+        <img src="/images/terrace-large.webp" alt="Terrasse couverte au bord de la piscine" loading="lazy" />
+        <img src="/images/exterior-night.webp" alt="La villa illuminée de nuit" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section id="jardin" class="section" style="background:var(--cream)">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Jardin & végétation</span>
+        <h2>Un jardin tropical, et la vue au bout de l’allée.</h2>
+        <p>Palmiers, plantes tropicales et allées ombragées entourent la villa. Le jardin est entretenu tout au long du séjour, et l’on aperçoit la montagne depuis les extérieurs.</p>
+        <p>Un cadre luxuriant et préservé, à quelques minutes seulement des plages de la côte ouest.</p>
+      </div>
+      <img src="/images/garden-1.webp" alt="Jardin tropical avec vue sur la montagne" loading="lazy" />
+    </div>
+    <div class="wrap" style="margin-top:.8rem">
+      <div class="gallery gallery-4">
+        <img src="/images/garden-4.webp" alt="Allée le long de la villa" loading="lazy" />
+        <img src="/images/garden-2.webp" alt="Allée bordée de palmiers" loading="lazy" />
+        <img src="/images/garden-3.webp" alt="Végétation tropicale du jardin" loading="lazy" />
+        <img src="/images/garden-5.webp" alt="Douche extérieure nichée dans la végétation" loading="lazy" />
+        <img src="/images/garden-6.webp" alt="Hamac sous les palmiers face à la villa" loading="lazy" />
+        <img src="/images/garden-8.webp" alt="Terrasse ombragée et fruits frais côté jardin" loading="lazy" />
+        <img src="/images/garden-9.webp" alt="Allée éclairée du jardin à la tombée de la nuit" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section id="water" class="section">
+    <div class="wrap split">
+      <img src="/images/kite-1.webp" alt="Kitesurfeurs sur la plage de la côte ouest" loading="lazy" />
+      <div>
+        <span class="eyebrow">Kitesurf & surf</span>
+        <h2>Une base idéale pour les sports de glisse.</h2>
+        <p>À moins de 15 minutes des meilleurs spots de surf et de kite de l’île, la villa est pensée pour les riders : deux douches extérieures et un grand espace sécurisé pour rincer, faire sécher et ranger ailes, planches et matériel de kitesurf, windsurf, wingfoil, SUP ou plongée.</p>
+        <p>Le Morne et sa vague mythique de One Eye offrent l’un des spots de kitesurf les plus iconiques au monde, tandis que Tamarin déroule ses vagues réputées pour le surf.</p>
+        <div class="actions">
+          <a class="btn btn-solid" href="https://www.google.com/maps/search/?api=1&query=One%20Eye%20Le%20Morne%20Maurice" target="_blank" rel="noopener">One Eye · Le Morne</a>
+          <a class="btn btn-outline" href="https://maps.app.goo.gl/SYe9KGJiohYCXpMs7?g_st=ic" target="_blank" rel="noopener">Tamarin · surf</a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap" style="margin-top:.8rem">
+      <div class="gallery">
+        <img class="wide" src="/images/kite-4.webp" alt="Kitesurf face au Morne" loading="lazy" />
+        <img src="/images/kite-5.webp" alt="Local à matériel : planches et ailes de kitesurf et de surf" loading="lazy" />
+        <img src="/images/kite-2.webp" alt="Matériel de kitesurf sur la plage" loading="lazy" />
+        <img src="/images/kite-3.webp" alt="Plage bordée de filaos" loading="lazy" />
+        <img src="/images/beach.webp" alt="Plage du Morne" loading="lazy" />
+        <img src="/images/lagoon.webp" alt="Lagon turquoise" loading="lazy" />
+        <img src="/images/sunset.webp" alt="Coucher de soleil sur le lagon" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section id="around" class="section" style="background:var(--cream)">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Autour de la villa</span>
+        <h2>La côte ouest à portée de main.</h2>
+      </div>
+      <div class="places-group">
+        <h3>Plages & spots</h3>
+        <div class="places">
+          {beaches.map(([n, u]) => (
+            <div class="place"><a href={u} target="_blank" rel="noopener">{n}<span>↗</span></a></div>
+          ))}
+        </div>
+      </div>
+      <div class="places-group">
+        <h3>Restaurants & sorties</h3>
+        <div class="places">
+          {restaurants.map(([n, u]) => (
+            <div class="place"><a href={u} target="_blank" rel="noopener">{n}<span>↗</span></a></div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <span class="eyebrow">Jeevan Palm · Île Maurice</span>
+    <h2>Le lagon la journée, votre piscine au retour.</h2>
+    <div class="actions" style="justify-content:center">
+      <a class="btn btn-light" href="/disponibilites">Voir les disponibilités</a>
+      <a class="btn btn-outline" href={whatsapp} target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div>
+        <Brand href="/" />
+        <p style="margin:.4rem 0 0">Villa privée · Côte ouest · Île Maurice</p>
+      </div>
+      <div>
+        <p style="margin:0">Contact<br /><a href={whatsapp} target="_blank" rel="noopener">Écrire sur WhatsApp</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <a class="floating" href={whatsapp} target="_blank" rel="noopener">WhatsApp</a>
+</body>
+</html>

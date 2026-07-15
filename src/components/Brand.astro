@@ -1,0 +1,8 @@
+---
+import palm from '../palm-logo.svg?raw';
+const { href = '/' } = Astro.props;
+---
+<a class="brand" href={href}>
+  <span class="logo" set:html={palm}></span>
+  <span class="brand-name">Jeevan Palm</span>
+</a>

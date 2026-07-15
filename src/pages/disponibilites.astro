@@ -1,0 +1,131 @@
+---
+import '../styles/global.css';
+import Brand from '../components/Brand.astro';
+
+const whatsapp = 'https://wa.me/41795362242?text=Bonjour%20Jeevan%20Palm%2C%20je%20souhaite%20r%C3%A9server%20la%20villa.';
+const ICAL = 'https://ical.booking.com/v1/export?t=33a5896b-5bbb-45dd-a331-e7617f0ea08a';
+
+const pad = (n) => String(n).padStart(2, '0');
+const parseYmd = (s) => new Date(Date.UTC(+s.slice(0, 4), +s.slice(4, 6) - 1, +s.slice(6, 8)));
+const fmt = (d) => `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}-${pad(d.getUTCDate())}`;
+
+const booked = new Set();
+let fetchOk = false;
+try {
+  const res = await fetch(ICAL);
+  if (res.ok) {
+    const text = await res.text();
+    let cur = null;
+    for (const raw of text.split(/\r?\n/)) {
+      const line = raw.trim();
+      if (line === 'BEGIN:VEVENT') cur = {};
+      else if (line === 'END:VEVENT') { if (cur?.start && cur?.end) { let d = parseYmd(cur.start); const end = parseYmd(cur.end); for (; d < end; d = new Date(d.getTime() + 864e5)) booked.add(fmt(d)); } cur = null; }
+      else if (cur) {
+        const m = line.match(/^DTSTART[^:]*:(\d{8})/); if (m) cur.start = m[1];
+        const n = line.match(/^DTEND[^:]*:(\d{8})/); if (n) cur.end = n[1];
+      }
+    }
+    fetchOk = true;
+  }
+} catch (e) { fetchOk = false; }
+
+const monthNames = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+const now = new Date();
+const todayYmd = fmt(new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate())));
+const MONTHS = 12;
+const months = [];
+for (let i = 0; i < MONTHS; i++) {
+  const base = now.getMonth() + i;
+  const year = now.getFullYear() + Math.floor(base / 12);
+  const month = ((base % 12) + 12) % 12;
+  const daysInMonth = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+  const firstDow = (new Date(Date.UTC(year, month, 1)).getUTCDay() + 6) % 7; // Monday = 0
+  const cells = [];
+  for (let k = 0; k < firstDow; k++) cells.push(null);
+  for (let day = 1; day <= daysInMonth; day++) {
+    const ymd = `${year}-${pad(month + 1)}-${pad(day)}`;
+    cells.push({ day, ymd, booked: booked.has(ymd), past: ymd < todayYmd });
+  }
+  months.push({ label: `${monthNames[month]} ${year}`, cells });
+}
+
+const updated = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).format(now);
+---
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Disponibilités — Jeevan Palm</title>
+  <meta name="description" content="Calendrier des disponibilités de la villa Jeevan Palm à l'île Maurice." />
+  <meta name="robots" content="index,follow" />
+</head>
+<body class="page-cal">
+  <header class="subhead">
+    <nav class="nav nav-solid">
+      <Brand href="/" />
+      <div class="nav-right">
+        <div class="navlinks"><a href="/">← Retour au site</a></div>
+        <div class="lang"><a href="/disponibilites" class="on">FR</a><span class="sep">·</span><a href="/en/availability">EN</a></div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="section cal-hero">
+    <div class="wrap">
+      <span class="eyebrow">Réservation</span>
+      <h1>Disponibilités</h1>
+      <p>Consultez les dates libres et réservez directement avec nous. Le calendrier est synchronisé avec nos réservations.</p>
+      <div class="legend">
+        <span class="lg"><i class="sw sw-free"></i> Disponible</span>
+        <span class="lg"><i class="sw sw-booked"></i> Occupé</span>
+      </div>
+      {!fetchOk && <p class="cal-warn">Le calendrier n’a pas pu être chargé pour le moment. Contactez-nous directement pour connaître les disponibilités.</p>}
+      <div class="actions">
+        <a class="btn btn-solid" href={whatsapp} target="_blank" rel="noopener">Réserver sur WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cal-section">
+    <div class="wrap">
+      <div class="cal-grid">
+        {months.map((mo) => (
+          <div class="cal-month">
+            <h3>{mo.label}</h3>
+            <div class="cal-dow"><span>Lu</span><span>Ma</span><span>Me</span><span>Je</span><span>Ve</span><span>Sa</span><span>Di</span></div>
+            <div class="cal-days">
+              {mo.cells.map((c) => (
+                c ? <span class={`day${c.booked ? ' booked' : ''}${c.past ? ' past' : ''}`}>{c.day}</span> : <span class="empty"></span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="cal-updated">Dernière mise à jour : {updated}</p>
+    </div>
+  </section>
+
+  <section class="cta">
+    <span class="eyebrow">Jeevan Palm · Île Maurice</span>
+    <h2>Une date vous plaît ? Réservons-la.</h2>
+    <div class="actions" style="justify-content:center">
+      <a class="btn btn-light" href={whatsapp} target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+      <a class="btn btn-outline" href="/">Revenir au site</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div>
+        <Brand href="/" />
+        <p style="margin:.4rem 0 0">Villa privée · Côte ouest · Île Maurice</p>
+      </div>
+      <div>
+        <p style="margin:0">Contact<br /><a href={whatsapp} target="_blank" rel="noopener">Écrire sur WhatsApp</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <a class="floating" href={whatsapp} target="_blank" rel="noopener">WhatsApp</a>
+</body>
+</html>
