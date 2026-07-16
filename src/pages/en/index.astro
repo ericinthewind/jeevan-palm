@@ -166,7 +166,7 @@ const restaurants = [
           </div>
           <div class={`room-photos count-${room.photos.length}`}>
             {room.photos.map(([name, alt]) => (
-              <img src={`/images/${name}.webp`} alt={alt} loading="lazy" />
+              <img src={img(`${name}.webp`)} alt={alt} loading="lazy" />
             ))}
           </div>
         </div>
