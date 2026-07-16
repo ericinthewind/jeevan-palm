@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Brand from '../components/Brand.astro';
+import { asset, base, img } from '../utils/paths';
 
 const whatsapp = 'https://wa.me/41795362242?text=Bonjour%20Jeevan%20Palm%2C%20je%20souhaite%20des%20informations%20sur%20la%20villa.';
 
@@ -64,12 +65,12 @@ const restaurants = [
   <title>Jeevan Palm — Villa privée à l'île Maurice</title>
   <meta name="description" content="Villa tropicale privée de quatre chambres avec piscine et jardin, sur la côte ouest de l'île Maurice, près du Morne et de Tamarin." />
   <meta property="og:title" content="Jeevan Palm — Villa privée à l'île Maurice" />
-  <meta property="og:image" content="/images/hero.webp" />
+  <meta property="og:image" content={asset('images/hero.webp')} />
 </head>
 <body>
   <header class="hero">
     <nav class="nav">
-      <Brand href="/" />
+      <Brand href={base} />
       <div class="nav-right">
         <div class="navlinks">
           <a href="#villa">La villa</a>
@@ -79,7 +80,7 @@ const restaurants = [
           <a href="#jardin">Jardin</a>
           <a href="#water">Sur l’eau</a>
         </div>
-        <div class="lang"><a href="/" class="on">FR</a><span class="sep">·</span><a href="/en">EN</a></div>
+        <div class="lang"><a href={base} class="on">FR</a><span class="sep">·</span><a href={asset('en')}>EN</a></div>
       </div>
     </nav>
     <div class="hero-inner">
@@ -90,7 +91,7 @@ const restaurants = [
       <h1>Une villa privée, entre le lagon et la montagne.</h1>
       <p>Quatre chambres, une piscine et un jardin tropical, à quelques minutes du Morne et de Tamarin.</p>
       <div class="actions">
-        <a class="btn btn-light" href="/disponibilites">Voir les disponibilités</a>
+        <a class="btn btn-light" href={asset('disponibilites')}>Voir les disponibilités</a>
         <a class="btn btn-outline" href={whatsapp} target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
@@ -111,10 +112,10 @@ const restaurants = [
         <p>Entre Le Morne et Tamarin, Jeevan Palm offre de généreux espaces de vie, une piscine privée et un jardin tropical entretenu. Du café du matin sur la terrasse aux longues soirées sous les palmiers.</p>
       </div>
       <div class="intro-grid">
-        <img src="/images/table-set.webp" alt="Grande table dressée avec vue sur la cuisine" loading="lazy" />
-        <img src="/images/table-garden.webp" alt="Grande table dressée ouverte sur le jardin" loading="lazy" />
-        <img src="/images/pool-view.webp" alt="Vue sur la piscine entre les palmiers" loading="lazy" />
-        <img src="/images/loungers.webp" alt="Transats au bord du jardin" loading="lazy" />
+        <img src={img('table-set.webp')} alt="Grande table dressée avec vue sur la cuisine" loading="lazy" />
+        <img src={img('table-garden.webp')} alt="Grande table dressée ouverte sur le jardin" loading="lazy" />
+        <img src={img('pool-view.webp')} alt="Vue sur la piscine entre les palmiers" loading="lazy" />
+        <img src={img('loungers.webp')} alt="Transats au bord du jardin" loading="lazy" />
       </div>
     </div>
   </section>
@@ -141,11 +142,11 @@ const restaurants = [
         <p>Le séjour se prolonge naturellement sur une grande terrasse couverte, face au jardin et à la piscine — l’endroit idéal pour les repas en famille comme pour les fins de journée à l’ombre.</p>
       </div>
       <div class="gallery">
-        <img class="wide" src="/images/salon-1.webp" alt="Grand salon ouvert" loading="lazy" />
-        <img src="/images/terrace-large.webp" alt="Grande terrasse couverte avec vue sur la piscine" loading="lazy" />
-        <img src="/images/salon-pool.webp" alt="Salon ouvert sur la terrasse et la piscine" loading="lazy" />
-        <img class="wide" src="/images/terrace-pool.webp" alt="Salon de terrasse face à la piscine" loading="lazy" />
-        <img src="/images/salon-3.webp" alt="Salon lumineux ouvert sur la terrasse" loading="lazy" />
+        <img class="wide" src={img('salon-1.webp')} alt="Grand salon ouvert" loading="lazy" />
+        <img src={img('terrace-large.webp')} alt="Grande terrasse couverte avec vue sur la piscine" loading="lazy" />
+        <img src={img('salon-pool.webp')} alt="Salon ouvert sur la terrasse et la piscine" loading="lazy" />
+        <img class="wide" src={img('terrace-pool.webp')} alt="Salon de terrasse face à la piscine" loading="lazy" />
+        <img src={img('salon-3.webp')} alt="Salon lumineux ouvert sur la terrasse" loading="lazy" />
       </div>
     </div>
   </section>
@@ -181,11 +182,11 @@ const restaurants = [
         <p>Entourée de palmiers et bordée d’une terrasse en bois, la piscine se profite toute la journée — et prend une tout autre allure une fois la nuit tombée.</p>
       </div>
       <div class="gallery">
-        <img class="wide tall" src="/images/pool-1.webp" alt="Piscine privée entourée de palmiers" loading="lazy" />
-        <img src="/images/pool-3.webp" alt="Vue sur la piscine depuis la villa" loading="lazy" />
-        <img src="/images/pool-2.webp" alt="Piscine éclairée à la tombée de la nuit" loading="lazy" />
-        <img src="/images/terrace-large.webp" alt="Terrasse couverte au bord de la piscine" loading="lazy" />
-        <img src="/images/exterior-night.webp" alt="La villa illuminée de nuit" loading="lazy" />
+        <img class="wide tall" src={img('pool-1.webp')} alt="Piscine privée entourée de palmiers" loading="lazy" />
+        <img src={img('pool-3.webp')} alt="Vue sur la piscine depuis la villa" loading="lazy" />
+        <img src={img('pool-2.webp')} alt="Piscine éclairée à la tombée de la nuit" loading="lazy" />
+        <img src={img('terrace-large.webp')} alt="Terrasse couverte au bord de la piscine" loading="lazy" />
+        <img src={img('exterior-night.webp')} alt="La villa illuminée de nuit" loading="lazy" />
       </div>
     </div>
   </section>
@@ -198,24 +199,24 @@ const restaurants = [
         <p>Palmiers, plantes tropicales et allées ombragées entourent la villa. Le jardin est entretenu tout au long du séjour, et l’on aperçoit la montagne depuis les extérieurs.</p>
         <p>Un cadre luxuriant et préservé, à quelques minutes seulement des plages de la côte ouest.</p>
       </div>
-      <img src="/images/garden-1.webp" alt="Jardin tropical avec vue sur la montagne" loading="lazy" />
+      <img src={img('garden-1.webp')} alt="Jardin tropical avec vue sur la montagne" loading="lazy" />
     </div>
     <div class="wrap" style="margin-top:.8rem">
       <div class="gallery gallery-4">
-        <img src="/images/garden-4.webp" alt="Allée le long de la villa" loading="lazy" />
-        <img src="/images/garden-2.webp" alt="Allée bordée de palmiers" loading="lazy" />
-        <img src="/images/garden-3.webp" alt="Végétation tropicale du jardin" loading="lazy" />
-        <img src="/images/garden-5.webp" alt="Douche extérieure nichée dans la végétation" loading="lazy" />
-        <img src="/images/garden-6.webp" alt="Hamac sous les palmiers face à la villa" loading="lazy" />
-        <img src="/images/garden-8.webp" alt="Terrasse ombragée et fruits frais côté jardin" loading="lazy" />
-        <img src="/images/garden-9.webp" alt="Allée éclairée du jardin à la tombée de la nuit" loading="lazy" />
+        <img src={img('garden-4.webp')} alt="Allée le long de la villa" loading="lazy" />
+        <img src={img('garden-2.webp')} alt="Allée bordée de palmiers" loading="lazy" />
+        <img src={img('garden-3.webp')} alt="Végétation tropicale du jardin" loading="lazy" />
+        <img src={img('garden-5.webp')} alt="Douche extérieure nichée dans la végétation" loading="lazy" />
+        <img src={img('garden-6.webp')} alt="Hamac sous les palmiers face à la villa" loading="lazy" />
+        <img src={img('garden-8.webp')} alt="Terrasse ombragée et fruits frais côté jardin" loading="lazy" />
+        <img src={img('garden-9.webp')} alt="Allée éclairée du jardin à la tombée de la nuit" loading="lazy" />
       </div>
     </div>
   </section>
 
   <section id="water" class="section">
     <div class="wrap split">
-      <img src="/images/kite-1.webp" alt="Kitesurfeurs sur la plage de la côte ouest" loading="lazy" />
+      <img src={img('kite-1.webp')} alt="Kitesurfeurs sur la plage de la côte ouest" loading="lazy" />
       <div>
         <span class="eyebrow">Kitesurf & surf</span>
         <h2>Une base idéale pour les sports de glisse.</h2>
@@ -229,13 +230,13 @@ const restaurants = [
     </div>
     <div class="wrap" style="margin-top:.8rem">
       <div class="gallery">
-        <img class="wide" src="/images/kite-4.webp" alt="Kitesurf face au Morne" loading="lazy" />
-        <img src="/images/kite-5.webp" alt="Local à matériel : planches et ailes de kitesurf et de surf" loading="lazy" />
-        <img src="/images/kite-2.webp" alt="Matériel de kitesurf sur la plage" loading="lazy" />
-        <img src="/images/kite-3.webp" alt="Plage bordée de filaos" loading="lazy" />
-        <img src="/images/beach.webp" alt="Plage du Morne" loading="lazy" />
-        <img src="/images/lagoon.webp" alt="Lagon turquoise" loading="lazy" />
-        <img src="/images/sunset.webp" alt="Coucher de soleil sur le lagon" loading="lazy" />
+        <img class="wide" src={img('kite-4.webp')} alt="Kitesurf face au Morne" loading="lazy" />
+        <img src={img('kite-5.webp')} alt="Local à matériel : planches et ailes de kitesurf et de surf" loading="lazy" />
+        <img src={img('kite-2.webp')} alt="Matériel de kitesurf sur la plage" loading="lazy" />
+        <img src={img('kite-3.webp')} alt="Plage bordée de filaos" loading="lazy" />
+        <img src={img('beach.webp')} alt="Plage du Morne" loading="lazy" />
+        <img src={img('lagoon.webp')} alt="Lagon turquoise" loading="lazy" />
+        <img src={img('sunset.webp')} alt="Coucher de soleil sur le lagon" loading="lazy" />
       </div>
     </div>
   </section>
@@ -277,7 +278,7 @@ const restaurants = [
   <footer class="footer">
     <div class="wrap footer-grid">
       <div>
-        <Brand href="/" />
+        <Brand href={base} />
         <p style="margin:.4rem 0 0">Villa privée · Côte ouest · Île Maurice</p>
       </div>
       <div>

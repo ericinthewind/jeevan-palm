@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Brand from '../components/Brand.astro';
+import { asset, base } from '../utils/paths';
 
 const whatsapp = 'https://wa.me/41795362242?text=Bonjour%20Jeevan%20Palm%2C%20je%20souhaite%20r%C3%A9server%20la%20villa.';
 const ICAL = 'https://ical.booking.com/v1/export?t=33a5896b-5bbb-45dd-a331-e7617f0ea08a';
@@ -62,10 +63,10 @@ const updated = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long'
 <body class="page-cal">
   <header class="subhead">
     <nav class="nav nav-solid">
-      <Brand href="/" />
+      <Brand href={base} />
       <div class="nav-right">
-        <div class="navlinks"><a href="/">← Retour au site</a></div>
-        <div class="lang"><a href="/disponibilites" class="on">FR</a><span class="sep">·</span><a href="/en/availability">EN</a></div>
+        <div class="navlinks"><a href={base}>← Retour au site</a></div>
+        <div class="lang"><a href={asset('disponibilites')} class="on">FR</a><span class="sep">·</span><a href={asset('en/availability')}>EN</a></div>
       </div>
     </nav>
   </header>
@@ -110,14 +111,14 @@ const updated = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long'
     <h2>Une date vous plaît ? Réservons-la.</h2>
     <div class="actions" style="justify-content:center">
       <a class="btn btn-light" href={whatsapp} target="_blank" rel="noopener">Écrire sur WhatsApp</a>
-      <a class="btn btn-outline" href="/">Revenir au site</a>
+      <a class="btn btn-outline" href={base}>Revenir au site</a>
     </div>
   </section>
 
   <footer class="footer">
     <div class="wrap footer-grid">
       <div>
-        <Brand href="/" />
+        <Brand href={base} />
         <p style="margin:.4rem 0 0">Villa privée · Côte ouest · Île Maurice</p>
       </div>
       <div>

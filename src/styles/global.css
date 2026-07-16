@@ -59,7 +59,7 @@ p{margin:0 0 1rem;color:var(--muted);max-width:60ch}
 .lang .sep{opacity:.35}
 
 .hero{min-height:88vh;display:flex;align-items:flex-end;color:#fff;position:relative;
-  background:linear-gradient(180deg,rgba(0,0,0,.28),rgba(0,0,0,.12) 40%,rgba(0,0,0,.42)),url('/images/hero.webp') center/cover}
+  background:linear-gradient(180deg,rgba(0,0,0,.28),rgba(0,0,0,.12) 40%,rgba(0,0,0,.42)),url('../../public/images/hero.webp') center/cover}
 .hero-inner{width:min(var(--max),calc(100% - 3rem));margin:0 auto;padding-bottom:9vh}
 .hero .eyebrow{color:#fff;opacity:.85}
 .hero h1{margin:.8rem 0 1rem;font-weight:400;max-width:16ch}
@@ -128,7 +128,7 @@ p{margin:0 0 1rem;color:var(--muted);max-width:60ch}
 
 /* cta */
 .cta{position:relative;color:#fff;text-align:center;padding:8rem 1.5rem;
-  background:linear-gradient(rgba(30,44,38,.5),rgba(30,44,38,.6)),url('/images/pool-1.webp') center/cover}
+  background:linear-gradient(rgba(30,44,38,.5),rgba(30,44,38,.6)),url('../../public/images/pool-1.webp') center/cover}
 .cta h2{font-weight:400;margin:.8rem 0 2rem;max-width:20ch;margin-inline:auto}
 .cta .eyebrow{color:#fff;opacity:.85}
 

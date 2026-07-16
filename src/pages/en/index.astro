@@ -1,6 +1,7 @@
 ---
 import '../../styles/global.css';
 import Brand from '../../components/Brand.astro';
+import { asset, base, img } from '../../utils/paths';
 
 const whatsapp = 'https://wa.me/41795362242?text=Hello%20Jeevan%20Palm%2C%20I%20would%20like%20information%20about%20the%20villa.';
 
@@ -64,12 +65,12 @@ const restaurants = [
   <title>Jeevan Palm — Private villa in Mauritius</title>
   <meta name="description" content="Private four-bedroom tropical villa with pool and garden, on the west coast of Mauritius, near Le Morne and Tamarin." />
   <meta property="og:title" content="Jeevan Palm — Private villa in Mauritius" />
-  <meta property="og:image" content="/images/hero.webp" />
+  <meta property="og:image" content={asset('images/hero.webp')} />
 </head>
 <body>
   <header class="hero">
     <nav class="nav">
-      <Brand href="/en" />
+      <Brand href={asset('en')} />
       <div class="nav-right">
         <div class="navlinks">
           <a href="#villa">The villa</a>
@@ -79,7 +80,7 @@ const restaurants = [
           <a href="#jardin">Garden</a>
           <a href="#water">On the water</a>
         </div>
-        <div class="lang"><a href="/">FR</a><span class="sep">·</span><a href="/en" class="on">EN</a></div>
+        <div class="lang"><a href={base}>FR</a><span class="sep">·</span><a href={asset('en')} class="on">EN</a></div>
       </div>
     </nav>
     <div class="hero-inner">
@@ -90,7 +91,7 @@ const restaurants = [
       <h1>A private villa, between the lagoon and the mountain.</h1>
       <p>Four bedrooms, a pool and a tropical garden, minutes from Le Morne and Tamarin.</p>
       <div class="actions">
-        <a class="btn btn-light" href="/en/availability">Check availability</a>
+        <a class="btn btn-light" href={asset('en/availability')}>Check availability</a>
         <a class="btn btn-outline" href={whatsapp} target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
@@ -111,10 +112,10 @@ const restaurants = [
         <p>Between Le Morne and Tamarin, Jeevan Palm offers generous living spaces, a private pool and a landscaped tropical garden. From morning coffee on the terrace to long evenings under the palm trees.</p>
       </div>
       <div class="intro-grid">
-        <img src="/images/table-set.webp" alt="Large table set with a view of the kitchen" loading="lazy" />
-        <img src="/images/table-garden.webp" alt="Large table set, open to the garden" loading="lazy" />
-        <img src="/images/pool-view.webp" alt="Pool view between the palm trees" loading="lazy" />
-        <img src="/images/loungers.webp" alt="Sun loungers by the garden" loading="lazy" />
+        <img src={img('table-set.webp')} alt="Large table set with a view of the kitchen" loading="lazy" />
+        <img src={img('table-garden.webp')} alt="Large table set, open to the garden" loading="lazy" />
+        <img src={img('pool-view.webp')} alt="Pool view between the palm trees" loading="lazy" />
+        <img src={img('loungers.webp')} alt="Sun loungers by the garden" loading="lazy" />
       </div>
     </div>
   </section>
@@ -141,11 +142,11 @@ const restaurants = [
         <p>The living space extends naturally onto a large covered terrace, facing the garden and pool — the perfect spot for family meals and shady end-of-day moments.</p>
       </div>
       <div class="gallery">
-        <img class="wide" src="/images/salon-1.webp" alt="Large open living room" loading="lazy" />
-        <img src="/images/terrace-large.webp" alt="Large covered terrace with pool view" loading="lazy" />
-        <img src="/images/salon-pool.webp" alt="Living room open to the terrace and pool" loading="lazy" />
-        <img class="wide" src="/images/terrace-pool.webp" alt="Terrace lounge facing the pool" loading="lazy" />
-        <img src="/images/salon-3.webp" alt="Bright living room open to the terrace" loading="lazy" />
+        <img class="wide" src={img('salon-1.webp')} alt="Large open living room" loading="lazy" />
+        <img src={img('terrace-large.webp')} alt="Large covered terrace with pool view" loading="lazy" />
+        <img src={img('salon-pool.webp')} alt="Living room open to the terrace and pool" loading="lazy" />
+        <img class="wide" src={img('terrace-pool.webp')} alt="Terrace lounge facing the pool" loading="lazy" />
+        <img src={img('salon-3.webp')} alt="Bright living room open to the terrace" loading="lazy" />
       </div>
     </div>
   </section>
@@ -181,11 +182,11 @@ const restaurants = [
         <p>Surrounded by palm trees and bordered by a wooden deck, the pool can be enjoyed all day — and takes on a whole new charm after dark.</p>
       </div>
       <div class="gallery">
-        <img class="wide tall" src="/images/pool-1.webp" alt="Private pool surrounded by palm trees" loading="lazy" />
-        <img src="/images/pool-3.webp" alt="Pool view from the villa" loading="lazy" />
-        <img src="/images/pool-2.webp" alt="Pool lit up at dusk" loading="lazy" />
-        <img src="/images/terrace-large.webp" alt="Covered terrace by the pool" loading="lazy" />
-        <img src="/images/exterior-night.webp" alt="The villa lit up at night" loading="lazy" />
+        <img class="wide tall" src={img('pool-1.webp')} alt="Private pool surrounded by palm trees" loading="lazy" />
+        <img src={img('pool-3.webp')} alt="Pool view from the villa" loading="lazy" />
+        <img src={img('pool-2.webp')} alt="Pool lit up at dusk" loading="lazy" />
+        <img src={img('terrace-large.webp')} alt="Covered terrace by the pool" loading="lazy" />
+        <img src={img('exterior-night.webp')} alt="The villa lit up at night" loading="lazy" />
       </div>
     </div>
   </section>
@@ -198,24 +199,24 @@ const restaurants = [
         <p>Palm trees, tropical plants and shaded paths surround the villa. The garden is maintained throughout your stay, and you can glimpse the mountain from the grounds.</p>
         <p>A lush, unspoilt setting, just minutes from the west-coast beaches.</p>
       </div>
-      <img src="/images/garden-1.webp" alt="Tropical garden with mountain view" loading="lazy" />
+      <img src={img('garden-1.webp')} alt="Tropical garden with mountain view" loading="lazy" />
     </div>
     <div class="wrap" style="margin-top:.8rem">
       <div class="gallery gallery-4">
-        <img src="/images/garden-4.webp" alt="Path alongside the villa" loading="lazy" />
-        <img src="/images/garden-2.webp" alt="Palm-lined path" loading="lazy" />
-        <img src="/images/garden-3.webp" alt="Tropical garden greenery" loading="lazy" />
-        <img src="/images/garden-5.webp" alt="Outdoor shower nestled in the greenery" loading="lazy" />
-        <img src="/images/garden-6.webp" alt="Hammock under the palm trees facing the villa" loading="lazy" />
-        <img src="/images/garden-8.webp" alt="Shaded terrace with fresh fruit by the garden" loading="lazy" />
-        <img src="/images/garden-9.webp" alt="Garden path lit up at dusk" loading="lazy" />
+        <img src={img('garden-4.webp')} alt="Path alongside the villa" loading="lazy" />
+        <img src={img('garden-2.webp')} alt="Palm-lined path" loading="lazy" />
+        <img src={img('garden-3.webp')} alt="Tropical garden greenery" loading="lazy" />
+        <img src={img('garden-5.webp')} alt="Outdoor shower nestled in the greenery" loading="lazy" />
+        <img src={img('garden-6.webp')} alt="Hammock under the palm trees facing the villa" loading="lazy" />
+        <img src={img('garden-8.webp')} alt="Shaded terrace with fresh fruit by the garden" loading="lazy" />
+        <img src={img('garden-9.webp')} alt="Garden path lit up at dusk" loading="lazy" />
       </div>
     </div>
   </section>
 
   <section id="water" class="section">
     <div class="wrap split">
-      <img src="/images/kite-1.webp" alt="Kitesurfers on the west-coast beach" loading="lazy" />
+      <img src={img('kite-1.webp')} alt="Kitesurfers on the west-coast beach" loading="lazy" />
       <div>
         <span class="eyebrow">Kitesurf & surf</span>
         <h2>An ideal base for board sports.</h2>
@@ -229,13 +230,13 @@ const restaurants = [
     </div>
     <div class="wrap" style="margin-top:.8rem">
       <div class="gallery">
-        <img class="wide" src="/images/kite-4.webp" alt="Kitesurf in front of Le Morne" loading="lazy" />
-        <img src="/images/kite-5.webp" alt="Gear room: kitesurf and surf boards and wings" loading="lazy" />
-        <img src="/images/kite-2.webp" alt="Kitesurf gear on the beach" loading="lazy" />
-        <img src="/images/kite-3.webp" alt="Beach lined with filao trees" loading="lazy" />
-        <img src="/images/beach.webp" alt="Le Morne beach" loading="lazy" />
-        <img src="/images/lagoon.webp" alt="Turquoise lagoon" loading="lazy" />
-        <img src="/images/sunset.webp" alt="Sunset over the lagoon" loading="lazy" />
+        <img class="wide" src={img('kite-4.webp')} alt="Kitesurf in front of Le Morne" loading="lazy" />
+        <img src={img('kite-5.webp')} alt="Gear room: kitesurf and surf boards and wings" loading="lazy" />
+        <img src={img('kite-2.webp')} alt="Kitesurf gear on the beach" loading="lazy" />
+        <img src={img('kite-3.webp')} alt="Beach lined with filao trees" loading="lazy" />
+        <img src={img('beach.webp')} alt="Le Morne beach" loading="lazy" />
+        <img src={img('lagoon.webp')} alt="Turquoise lagoon" loading="lazy" />
+        <img src={img('sunset.webp')} alt="Sunset over the lagoon" loading="lazy" />
       </div>
     </div>
   </section>
@@ -277,7 +278,7 @@ const restaurants = [
   <footer class="footer">
     <div class="wrap footer-grid">
       <div>
-        <Brand href="/en" />
+        <Brand href={asset('en')} />
         <p style="margin:.4rem 0 0">Private villa · West coast · Mauritius</p>
       </div>
       <div>

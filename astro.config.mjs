@@ -1,7 +1,8 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-const base = process.env.ASTRO_BASE || '/';
+const rawBase = process.env.ASTRO_BASE || '/';
+const base = rawBase === '/' ? '/' : rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
 
 export default defineConfig({
   site: base === '/' ? 'https://jeevanpalm.com' : 'https://ericinthewind.github.io',
