@@ -1,9 +1,30 @@
 ---
 import '../../styles/global.css';
 import Brand from '../../components/Brand.astro';
+import ReviewsBar from '../../components/ReviewsBar.astro';
 import { asset, base, img } from '../../utils/paths';
 
 const whatsapp = 'https://wa.me/41795362242?text=Hello%20Jeevan%20Palm%2C%20I%20would%20like%20information%20about%20the%20villa.';
+
+/** Update scores / links here */
+const reviews = [
+  {
+    platform: 'Booking.com',
+    score: '9.0',
+    scale: '/10',
+    label: 'Superb',
+    count: '8 reviews',
+    href: 'https://www.booking.com/searchresults.html?ss=Jeevan+Palm+House+Petite+Case+Noyale',
+  },
+  {
+    platform: 'Airbnb',
+    score: '5.0',
+    scale: '/5',
+    label: 'Guest favourite',
+    count: 'guest reviews',
+    href: 'https://www.airbnb.com/s/Petite-Case-Noyale--Mauritius/homes?query=Jeevan%20Palm',
+  },
+];
 
 const features = [
   ['Pool & garden', 'Private pool and landscaped tropical garden, upkeep included during your stay.'],
@@ -103,6 +124,8 @@ const restaurants = [
     <div class="stat"><strong>3</strong><span>bathrooms</span></div>
     <div class="stat"><strong>1</strong><span>private pool</span></div>
   </section>
+
+  <ReviewsBar eyebrow="Guest ratings" reviews={reviews} />
 
   <section id="villa" class="section">
     <div class="wrap">

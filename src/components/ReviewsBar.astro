@@ -1,0 +1,38 @@
+---
+interface Review {
+  platform: string;
+  score: string;
+  scale?: string;
+  label: string;
+  count: string;
+  href: string;
+}
+
+interface Props {
+  eyebrow: string;
+  reviews: Review[];
+}
+
+const { eyebrow, reviews } = Astro.props;
+---
+<section class="reviews-bar" aria-label={eyebrow}>
+  <div class="wrap reviews-inner">
+    <span class="eyebrow">{eyebrow}</span>
+    <div class="reviews-list">
+      {reviews.map((r) => (
+        <a class="review" href={r.href} target="_blank" rel="noopener">
+          <span class="review-platform">{r.platform}</span>
+          <span class="review-score">
+            <strong>{r.score}</strong>
+            {r.scale && <span class="review-scale">{r.scale}</span>}
+          </span>
+          <span class="review-meta">
+            <span class="review-label">{r.label}</span>
+            <span class="review-count">{r.count}</span>
+          </span>
+          <span class="review-go" aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
