@@ -4,8 +4,6 @@ interface Review {
   score: string;
   scale?: string;
   label: string;
-  count: string;
-  href: string;
 }
 
 interface Props {
@@ -20,18 +18,14 @@ const { eyebrow, reviews } = Astro.props;
     <span class="eyebrow">{eyebrow}</span>
     <div class="reviews-list">
       {reviews.map((r) => (
-        <a class="review" href={r.href} target="_blank" rel="noopener">
+        <div class="review">
           <span class="review-platform">{r.platform}</span>
           <span class="review-score">
             <strong>{r.score}</strong>
             {r.scale && <span class="review-scale">{r.scale}</span>}
           </span>
-          <span class="review-meta">
-            <span class="review-label">{r.label}</span>
-            <span class="review-count">{r.count}</span>
-          </span>
-          <span class="review-go" aria-hidden="true">↗</span>
-        </a>
+          <span class="review-label">{r.label}</span>
+        </div>
       ))}
     </div>
   </div>
