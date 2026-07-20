@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    # Refresh calendar feeds daily (UTC)
+    - cron: '0 4 * * *'
+
 
 permissions:
   contents: read

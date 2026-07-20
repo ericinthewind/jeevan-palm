@@ -2,54 +2,13 @@
 import '../styles/global.css';
 import Brand from '../components/Brand.astro';
 import { asset, base } from '../utils/paths';
+import { buildMonths, loadBookedDates } from '../utils/calendar';
 
 const whatsapp = 'https://wa.me/41795362242?text=Bonjour%20Jeevan%20Palm%2C%20je%20souhaite%20r%C3%A9server%20la%20villa.';
-const ICAL = 'https://ical.booking.com/v1/export?t=33a5896b-5bbb-45dd-a331-e7617f0ea08a';
 
-const pad = (n) => String(n).padStart(2, '0');
-const parseYmd = (s) => new Date(Date.UTC(+s.slice(0, 4), +s.slice(4, 6) - 1, +s.slice(6, 8)));
-const fmt = (d) => `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}-${pad(d.getUTCDate())}`;
-
-const booked = new Set();
-let fetchOk = false;
-try {
-  const res = await fetch(ICAL);
-  if (res.ok) {
-    const text = await res.text();
-    let cur = null;
-    for (const raw of text.split(/\r?\n/)) {
-      const line = raw.trim();
-      if (line === 'BEGIN:VEVENT') cur = {};
-      else if (line === 'END:VEVENT') { if (cur?.start && cur?.end) { let d = parseYmd(cur.start); const end = parseYmd(cur.end); for (; d < end; d = new Date(d.getTime() + 864e5)) booked.add(fmt(d)); } cur = null; }
-      else if (cur) {
-        const m = line.match(/^DTSTART[^:]*:(\d{8})/); if (m) cur.start = m[1];
-        const n = line.match(/^DTEND[^:]*:(\d{8})/); if (n) cur.end = n[1];
-      }
-    }
-    fetchOk = true;
-  }
-} catch (e) { fetchOk = false; }
-
+const { booked, fetchOk } = await loadBookedDates();
 const monthNames = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
-const now = new Date();
-const todayYmd = fmt(new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate())));
-const MONTHS = 12;
-const months = [];
-for (let i = 0; i < MONTHS; i++) {
-  const base = now.getMonth() + i;
-  const year = now.getFullYear() + Math.floor(base / 12);
-  const month = ((base % 12) + 12) % 12;
-  const daysInMonth = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
-  const firstDow = (new Date(Date.UTC(year, month, 1)).getUTCDay() + 6) % 7; // Monday = 0
-  const cells = [];
-  for (let k = 0; k < firstDow; k++) cells.push(null);
-  for (let day = 1; day <= daysInMonth; day++) {
-    const ymd = `${year}-${pad(month + 1)}-${pad(day)}`;
-    cells.push({ day, ymd, booked: booked.has(ymd), past: ymd < todayYmd });
-  }
-  months.push({ label: `${monthNames[month]} ${year}`, cells });
-}
-
+const { months, now } = buildMonths(booked, monthNames);
 const updated = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).format(now);
 ---
 <html lang="fr">
@@ -75,7 +34,7 @@ const updated = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long'
     <div class="wrap">
       <span class="eyebrow">Réservation</span>
       <h1>Disponibilités</h1>
-      <p>Consultez les dates libres et réservez directement avec nous. Le calendrier est synchronisé avec nos réservations.</p>
+      <p>Consultez les dates libres et réservez directement avec nous. Le calendrier est synchronisé avec Booking et notre agenda.</p>
       <div class="legend">
         <span class="lg"><i class="sw sw-free"></i> Disponible</span>
         <span class="lg"><i class="sw sw-booked"></i> Occupé</span>
