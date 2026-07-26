@@ -159,12 +159,15 @@ const restaurants = [
       <div>
         <span class="eyebrow">Sécurité & accès</span>
         <h2>Un lotissement fermé, gardienné jour et nuit.</h2>
-        <p>L’entrée du lotissement est contrôlée par un portail avec gardien 24h/24. Sur place, un carport couvert accueille votre véhicule à l’abri, dans l’enceinte privée de la villa.</p>
+        <p>L’entrée du lotissement est contrôlée par un portail avec gardien 24h/24. Au loin, le lagon turquoise apparaît déjà depuis la route. Sur place, un carport couvert accueille votre véhicule à l’abri, dans l’enceinte privée de la villa.</p>
       </div>
-      <img src={img('gate.webp')} alt="Entrée du lotissement sécurisé avec gardien" loading="lazy" />
+      <img src={img('gate-lagoon.webp')} alt="Entrée du lotissement avec vue sur le lagon turquoise" loading="lazy" />
     </div>
     <div class="wrap" style="margin-top:.8rem">
-      <img src={img('carport.webp')} alt="Carport privé et entrée de la villa" loading="lazy" style="width:100%;height:min(52vh,520px);object-fit:cover;display:block" />
+      <div class="intro-grid">
+        <img src={img('gate.webp')} alt="Portail et poste de gardien du lotissement" loading="lazy" />
+        <img src={img('carport.webp')} alt="Carport privé et entrée de la villa" loading="lazy" />
+      </div>
     </div>
   </section>
 

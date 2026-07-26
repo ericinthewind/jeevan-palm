@@ -159,12 +159,15 @@ const restaurants = [
       <div>
         <span class="eyebrow">Security & access</span>
         <h2>A gated community, watched day and night.</h2>
-        <p>The estate entrance is controlled by a gate with 24/7 security. On site, a covered carport shelters your vehicle within the villa’s private grounds.</p>
+        <p>The estate entrance is controlled by a gate with 24/7 security. From the road, the turquoise lagoon already comes into view. On site, a covered carport shelters your vehicle within the villa’s private grounds.</p>
       </div>
-      <img src={img('gate.webp')} alt="Secure estate entrance with security gate" loading="lazy" />
+      <img src={img('gate-lagoon.webp')} alt="Estate entrance with a view of the turquoise lagoon" loading="lazy" />
     </div>
     <div class="wrap" style="margin-top:.8rem">
-      <img src={img('carport.webp')} alt="Private carport and villa entrance" loading="lazy" style="width:100%;height:min(52vh,520px);object-fit:cover;display:block" />
+      <div class="intro-grid">
+        <img src={img('gate.webp')} alt="Gate and security post of the estate" loading="lazy" />
+        <img src={img('carport.webp')} alt="Private carport and villa entrance" loading="lazy" />
+      </div>
     </div>
   </section>
 
