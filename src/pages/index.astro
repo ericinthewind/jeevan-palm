@@ -32,6 +32,7 @@ const features = [
   ['Arrière-cuisine', 'Un espace dédié pour cuisiner et nettoyer, idéal pour préparer le poisson du jour au retour de la pêche.'],
   ['Quatre WC', 'Un WC dans chaque salle de bain, plus un WC visiteurs indépendant.'],
   ['Parking privé', 'Un carport couvert et un stationnement à l’abri, dans l’enceinte close de la villa.'],
+  ['Lotissement sécurisé', 'La villa se trouve dans un lotissement fermé, avec portail et gardien 24h/24.'],
   ['Slow living', 'Terrasses ombragées, transats et hamac pour ralentir vraiment.'],
 ];
 
@@ -128,7 +129,7 @@ const restaurants = [
       <div class="intro-head">
         <span class="eyebrow">La villa</span>
         <h2>Vivre Maurice à son rythme.</h2>
-        <p>Entre Le Morne et Tamarin, Jeevan Palm offre de généreux espaces de vie, une piscine privée et un jardin tropical entretenu. Du café du matin sur la terrasse aux longues soirées sous les palmiers.</p>
+        <p>Entre Le Morne et Tamarin, Jeevan Palm offre de généreux espaces de vie, une piscine privée et un jardin tropical entretenu. Du café du matin sur la terrasse aux longues soirées sous les palmiers. La villa se situe dans un lotissement sécurisé, avec portail et gardien 24h/24.</p>
       </div>
       <div class="intro-grid">
         <img src={img('table-set.webp')} alt="Grande table dressée avec vue sur la cuisine" loading="lazy" />
@@ -153,6 +154,20 @@ const restaurants = [
     </div>
   </section>
 
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Sécurité & accès</span>
+        <h2>Un lotissement fermé, gardienné jour et nuit.</h2>
+        <p>L’entrée du lotissement est contrôlée par un portail avec gardien 24h/24. Sur place, un carport couvert accueille votre véhicule à l’abri, dans l’enceinte privée de la villa.</p>
+      </div>
+      <img src={img('gate.webp')} alt="Entrée du lotissement sécurisé avec gardien" loading="lazy" />
+    </div>
+    <div class="wrap" style="margin-top:.8rem">
+      <img src={img('carport.webp')} alt="Carport privé et entrée de la villa" loading="lazy" style="width:100%;height:min(52vh,520px);object-fit:cover;display:block" />
+    </div>
+  </section>
+
   <section id="salon" class="section">
     <div class="wrap">
       <div class="section-head">
@@ -166,6 +181,7 @@ const restaurants = [
         <img src={img('salon-pool.webp')} alt="Salon ouvert sur la terrasse et la piscine" loading="lazy" />
         <img class="wide" src={img('terrace-pool.webp')} alt="Salon de terrasse face à la piscine" loading="lazy" />
         <img src={img('salon-3.webp')} alt="Salon lumineux ouvert sur la terrasse" loading="lazy" />
+        <img src={img('ganesha.webp')} alt="Statue de Ganesha dans la villa" loading="lazy" />
       </div>
     </div>
   </section>
