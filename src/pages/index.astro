@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Brand from '../components/Brand.astro';
+import Lightbox from '../components/Lightbox.astro';
 import ReviewsBar from '../components/ReviewsBar.astro';
 import { asset, base, img } from '../utils/paths';
 
@@ -326,5 +327,6 @@ const restaurants = [
   </footer>
 
   <a class="floating" href={whatsapp} target="_blank" rel="noopener">WhatsApp</a>
+  <Lightbox />
 </body>
 </html>
